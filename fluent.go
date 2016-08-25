@@ -52,7 +52,7 @@ func (f *FluentHook) buildMessage(entry *logrus.Entry) map[string]interface{} {
 		if k == "tag" {
 			continue
 		}
-		data[k] = v
+		data[k] = fmt.Sprint(v)
 	}
 	data["msg"] = entry.Message
 	data["level"] = entry.Level.String()
