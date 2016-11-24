@@ -52,7 +52,13 @@ func (f *FluentHook) buildMessage(entry *logrus.Entry) map[string]interface{} {
 		if k == "tag" {
 			continue
 		}
-		data[k] = fmt.Sprint(v)
+		switch v.(type) {
+		case uint8, uint16, uint32, uint64, int8, int16, int32, int64, float32, float64, complex64, complex128, uint, int, string:
+			// For permitive types, assign directly to preserve original type
+			data[k] = v
+		default:
+			data[k] = fmt.Sprint(v)
+		}
 	}
 	data["msg"] = entry.Message
 	data["level"] = entry.Level.String()
