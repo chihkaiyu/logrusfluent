@@ -53,11 +53,17 @@ func (f *FluentHook) buildMessage(entry *logrus.Entry) map[string]interface{} {
 			continue
 		}
 		switch v.(type) {
-		case uint8, uint16, uint32, uint64, int8, int16, int32, int64, float32, float64, complex64, complex128, uint, int, string:
-			// For permitive types, assign directly to preserve original type
-			data[k] = v
+		// add prefix to separate logs for protecting elasticsearch
+		case uint8, uint16, uint32, uint64, int8, int16, int32, int64, uint, int:
+			data["i_"+k] = v
+		case float32, float64:
+			data["f_"+k] = v
+		case string:
+			data["s_"+k] = v
+		case complex64, complex128:
+			data["c_"+k] = v
 		default:
-			data[k] = fmt.Sprint(v)
+			data["t_"+k] = fmt.Sprint(v)
 		}
 	}
 	data["msg"] = entry.Message
