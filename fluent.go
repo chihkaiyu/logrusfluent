@@ -63,7 +63,7 @@ func (f *FluentHook) buildMessage(entry *logrus.Entry) map[string]interface{} {
 		case complex64, complex128:
 			data["c_"+k] = v
 		default:
-			data["t_"+k] = fmt.Sprint(v)
+			data["t_"+k] = fmt.Sprintf("%+v", v)
 		}
 	}
 	data["msg"] = entry.Message
