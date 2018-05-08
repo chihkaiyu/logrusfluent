@@ -2,8 +2,9 @@ package logrusfluent
 
 import (
 	"fmt"
-	"github.com/Sirupsen/logrus"
+
 	"github.com/fluent/fluent-logger-golang/fluent"
+	"github.com/sirupsen/logrus"
 )
 
 // FluentHook to send logs via fluentd.
