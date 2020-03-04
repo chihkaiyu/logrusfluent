@@ -9,7 +9,7 @@ import (
 
 func TestFluentHook(t *testing.T) {
 	log := logrus.New()
-	hook, err := NewFluentHook(fluent.Config{})
+	hook, err := NewFluentHook(fluent.Config{}, 2048)
 
 	if err != nil {
 		t.Errorf("Unable to create hook.")
