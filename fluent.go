@@ -3,8 +3,8 @@ package logrusfluent
 import (
 	"fmt"
 
+	"github.com/17media/logrus"
 	"github.com/fluent/fluent-logger-golang/fluent"
-	"github.com/sirupsen/logrus"
 )
 
 const (
