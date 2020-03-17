@@ -3,8 +3,8 @@ package logrusfluent
 import (
 	"testing"
 
+	"github.com/17media/logrus"
 	"github.com/fluent/fluent-logger-golang/fluent"
-	"github.com/sirupsen/logrus"
 )
 
 func TestFluentHook(t *testing.T) {
@@ -12,6 +12,7 @@ func TestFluentHook(t *testing.T) {
 	hook, err := NewFluentHook(fluent.Config{}, 2048)
 
 	if err != nil {
+		t.Error(err)
 		t.Errorf("Unable to create hook.")
 	}
 
