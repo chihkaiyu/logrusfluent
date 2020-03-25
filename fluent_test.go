@@ -3,7 +3,7 @@ package logrusfluent
 import (
 	"testing"
 
-	"github.com/17media/logrus"
+	"github.com/chihkaiyu/logrus"
 	"github.com/fluent/fluent-logger-golang/fluent"
 )
 
